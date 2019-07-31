@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Books</title>
+    <title>Library</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/books.js"></script>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
+        <ul class="navbar-nav">
+            <li class="nav-item active" >
+                <a class="nav-link" href="#" id="tp1">Books</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a  class="nav-link" href="#" data-toggle="dropdown" >Categories</a>
+                    <ul id="cat">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li class="dropdown-item">Thriller</li>
+                            <li class="dropdown-item">Romance</li>
+                            <li class="dropdown-item">Fiction</li>
+                            <li class="dropdown-item">Comedy</li>
+                            <li class="dropdown-item">Fantasy</li>
+                        </div>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+        
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <div class="col">
+                <img src="./ajax-loader.gif" alt="" id="load"> 
+            </div>
+            <div class="results">
+
+            </div>
+        </div> <br><br>
+        
+    </div>       
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

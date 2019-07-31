@@ -1,141 +1,29 @@
-$(document).ready(function(){             //jQuery
-    $("#load").hide();
-    $("#cat").click(function(){
-        $("#tech").click(function(){
-            //var x="";  use on change to get the category and append it in the url
-
-            $.ajax({                        //AJAX format
-                type:"GET",                 //type mentions the method to be used 
-                url :"https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=744c6592531e446cb11640533858f6a8",         //can provide API link
-                beforeSend : function(){
-                    $("#load").show();
-                },
-                success : function(data){
-                    $("#load").hide();
-                    //console.log(data);
-                    //var articles = data['articles'];
-                    //console.log(articles);
-                    var j = 1;
-                    var card = "<div class='card'> <thead class='thead-dark'> <tr> <th> Sl.No. </th> <th> Title </th> <th> Description </th> <th> Image </th> <th> URL </th> </thead>";
-                    for (var i in data){  //Array traversal
-                        table+= "<td>" + articles[i].title + "</td>";
-                        table+= "<td>" + articles[i].description + "</td>";
-                        table+= "<td> <img src=" + articles[i].urlToImage + " style='width:200px;height:200px;'> </td>";
-                        table+= "<td> <a href=" + articles[i].url + "> Read More </a></td> </tr>";
-                        j++;
-                    }
-                    table+="</table>";
-                    $(".results").html(table);   
-                }         
-            });
-        });
-        $("#bus").click(function(){
-            $.ajax({                        //AJAX format
-                type:"GET",                 //type mentions the method to be used 
-                url :"https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=744c6592531e446cb11640533858f6a8",         //can provide API link
-                beforeSend : function(){
-                    $("#load").show();
-                },
-                success : function(data){
-                    $("#load").hide();
-                    //console.log(data);
-                    var articles = data['articles'];
-                    console.log(articles);
-                    var j = 1;
-                    var table = "<table class='table table-bordered'> <thead class='thead-dark'> <tr> <th> Sl.No. </th> <th> Title </th> <th> Description </th> <th> Image </th> <th> URL </th> </thead>";
-                    for (var i in articles){  //Array traversal
-                        table+= "<tr> <td>" + j + "</td>";
-                        table+= "<td>" + articles[i].title + "</td>";
-                        table+= "<td>" + articles[i].description + "</td>";
-                        table+= "<td> <img src=" + articles[i].urlToImage + " style='width:200px;height:200px;'> </td>";
-                        table+= "<td> <a href=" + articles[i].url + "> Read More </a></td> </tr>";
-                        j++;
-                    }
-                    table+="</table>";
-                    $(".results").html(table);   
-                }         
-            });
-        });
-        $("#spo").click(function(){
-            $.ajax({                        //AJAX format
-                type:"GET",                 //type mentions the method to be used 
-                url :"https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=744c6592531e446cb11640533858f6a8",         //can provide API link
-                beforeSend : function(){
-                    $("#load").show();
-                },
-                success : function(data){
-                    $("#load").hide();
-                    //console.log(data);
-                    var articles = data['articles'];
-                    console.log(articles);
-                    var j = 1;
-                    var table = "<table class='table table-bordered'> <thead class='thead-dark'> <tr> <th> Sl.No. </th> <th> Title </th> <th> Description </th> <th> Image </th> <th> URL </th> </thead>";
-                    for (var i in articles){  //Array traversal
-                        table+= "<tr> <td>" + j + "</td>";
-                        table+= "<td>" + articles[i].title + "</td>";
-                        table+= "<td>" + articles[i].description + "</td>";
-                        table+= "<td> <img src=" + articles[i].urlToImage + " style='width:200px;height:200px;'> </td>";
-                        table+= "<td> <a href=" + articles[i].url + "> Read More </a></td> </tr>";
-                        j++;
-                    }
-                    table+="</table>";
-                    $(".results").html(table);   
-                }         
-            });
-        });
-        $("#ent").click(function(){
-            $.ajax({                        //AJAX format
-                type:"GET",                 //type mentions the method to be used 
-                url :"https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=744c6592531e446cb11640533858f6a8",         //can provide API link
-                beforeSend : function(){
-                    $("#load").show();
-                },
-                success : function(data){
-                    $("#load").hide();
-                    //console.log(data);
-                    var articles = data['articles'];
-                    console.log(articles);
-                    var j = 1;
-                    var table = "<table class='table table-bordered'> <thead class='thead-dark'> <tr> <th> Sl.No. </th> <th> Title </th> <th> Description </th> <th> Image </th> <th> URL </th> </thead>";
-                    for (var i in articles){  //Array traversal
-                        table+= "<tr> <td>" + j + "</td>";
-                        table+= "<td>" + articles[i].title + "</td>";
-                        table+= "<td>" + articles[i].description + "</td>";
-                        table+= "<td> <img src=" + articles[i].urlToImage + " style='width:200px;height:200px;'> </td>";
-                        table+= "<td> <a href=" + articles[i].url + "> Read More </a></td> </tr>";
-                        j++;
-                    }
-                    table+="</table>";
-                    $(".results").html(table);   
-                }         
-            });
-        });
-    });
-
-    $("#tp1").click(function(){      
-        $.ajax({                        //AJAX format
-            type:"GET",                 //type mentions the method to be used 
-            url :"https://newsapi.org/v2/top-headlines?country=in&apiKey=744c6592531e446cb11640533858f6a8",         //can provide API link
+$(document).ready(function(){             
+    $("#tp1,#cat li").click(function(){
+        var cat = $(this).text();
+        console.log(cat);
+        
+        $.ajax({                        
+            type:"GET",                  
+            url :"books.json",         
             beforeSend : function(){
                 $("#load").show();
             },
             success : function(data){
-                $("#load").hide();
-                //console.log(data);
-                var articles = data['articles'];
-                console.log(articles);
-                var j = 1;
-                var table = "<table class='table table-bordered'> <thead class='thead-dark'> <tr> <th> Sl.No. </th> <th> Title </th> <th> Description </th> <th> Image </th> <th> URL </th> </thead>";
-                for (var i in articles){  //Array traversal
-                    table+= "<tr> <td>" + j + "</td>";
-                    table+= "<td>" + articles[i].title + "</td>";
-                    table+= "<td>" + articles[i].description + "</td>";
-                    table+= "<td> <img src=" + articles[i].urlToImage + " style='width:200px;height:200px;'> </td>";
-                    table+= "<td> <a href=" + articles[i].url + "> Read More </a></td> </tr>";
-                    j++;
+                $("#load").hide();              
+                var card="<div class='card-deck'>";
+                for (var j in data){
+                    if (cat == data[j].category || cat == 'Books')
+                    {
+                        card+="<div class='col-4 col-sm-4 col-md-4'> <div class='card'> <img class='card-img-top' src=" + data[j].urltoimage + " height='400px' width='325px'>";
+                        card+="<div class='card-body'> <h5 class='card-title'>"+ data[j].title +"</h5>";
+                        card+="<h6 class='card-subtitle mb-2 text-muted'>" + data[j].author +"</h6> ";
+                        card+="<p class='card-text text-justify'>"+ data[j].description + "</p> </div>";
+                        card+="<div class='card-text text-center'> <p>Price: "+ data[j].price+"</p><p>Genre: "+ data[j].category+"</p></div></div></div> <br>";
+                    }
                 }
-                table+="</table>";
-                $(".results").html(table);   
+                card+="</div>";
+                $(".results").html(card);
             }         
         });
     });
