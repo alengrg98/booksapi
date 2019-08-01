@@ -15,7 +15,7 @@ $(document).ready(function(){
                 for (var j in data){
                     if (cat == data[j].category || cat == 'Books')
                     {
-                        card+="<div class='col-4 col-sm-4 col-md-4'> <div class='card'> <img class='card-img-top' src=" + data[j].urltoimage + " height='400px' width='325px'>";
+                        card+="<div class='col-4 col-sm-4 col-md-4'> <div class='card' > <img class='card-img-top' src=" + data[j].urltoimage + " height='400px' width='325px'>";
                         card+="<div class='card-body'> <h5 class='card-title'>"+ data[j].title +"</h5>";
                         card+="<h6 class='card-subtitle mb-2 text-muted'>" + data[j].author +"</h6> ";
                         card+="<p class='card-text text-justify'>"+ data[j].description + "</p> </div>";
